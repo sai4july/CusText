@@ -21,10 +21,10 @@ def get_parser():
     parser.add_argument("--eval_steps",type=int,default=50)
 
     # ---CusText params---
-    parser.add_argument("--eps", type=float, default=5.0)
+    parser.add_argument("--eps", type=float, default=1.0)
     parser.add_argument("--top_k", type=int, default=20)
     parser.add_argument("--embedding_type", type=str, default="ct_vectors")
     parser.add_argument("--mapping_strategy", type=str, default="conservative")
     parser.add_argument("--privatization_strategy", type=str, default="s1")
-    parser.add_argument("--save_stop_words", type=bool, default=True)
+    parser.add_argument("--save_stop_words", type=bool, default=False)
     return parser
