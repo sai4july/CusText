@@ -32,9 +32,7 @@ warnings.filterwarnings('ignore')
 parser = get_parser()
 args = parser.parse_args()
 
-"""
-加载数据
-"""
+
 def load_data(dataset=None):
 
     print(f'__loading__{args.dataset}__')
@@ -43,9 +41,7 @@ def load_data(dataset=None):
     test_df = pd.read_csv(f"datasets/{args.dataset}/test.tsv",'\t')
     return train_df,dev_df,test_df
 
-"""
-构造Dataset类
-"""
+
 class Bert_dataset(Dataset):
     def __init__(self,df):
         self.df=df
