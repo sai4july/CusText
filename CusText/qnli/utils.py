@@ -183,34 +183,26 @@ def get_customized_mapping(eps,top_k):
                         
                     if args.mapping_strategy == "aggressive":
                         sim_dist_list = np.dot(embeddings[word2idx[x]], embedding_list.T)
-                        #计算概率
                         min_max_dist = max(sim_dist_list) - min(sim_dist_list)
                         min_dist = min(sim_dist_list)
                         new_sim_dist_list = [(x-min_dist)/min_max_dist for x in sim_dist_list]
                         tmp = [np.exp(eps*x/2) for x in new_sim_dist_list]
                         norm = sum(tmp)
                         p = [x/norm for x in tmp]
-                        #登记sample概率
                         p_dict[word] = p
-                        #登记近义词
                         sim_word_dict[word] =  word_list
                     else:
-                        #登记选中top_k中的每个词（包括他自己）
                         for x in word_list:
-                            #对于从前登记过的词不再登记
                             if x not in word_hash:
                                 word_hash[x] = word
                                 sim_dist_list = np.dot(embeddings[word2idx[x]], embedding_list.T)
-                                #计算概率
                                 min_max_dist = max(sim_dist_list) - min(sim_dist_list)
                                 min_dist = min(sim_dist_list)
                                 new_sim_dist_list = [(x-min_dist)/min_max_dist for x in sim_dist_list]
                                 tmp = [np.exp(eps*x/2) for x in new_sim_dist_list]
                                 norm = sum(tmp)
                                 p = [x/norm for x in tmp]
-                                #登记sample概率
                                 p_dict[x] = p
-                                #登记近义词
                                 sim_word_dict[x] =  word_list
                         if args.mapping_strategy == "conservative":
                             inf_embedding = [0] * 300
@@ -238,11 +230,6 @@ def get_customized_mapping(eps,top_k):
 
 
     return sim_word_dict,p_dict
-
-
-"""
-    privatization-strategy1
-"""
 
 def generate_new_sents_s1(df,sim_word_dict,p_dict,save_stop_words,type="train"):
 
@@ -301,6 +288,6 @@ def generate_new_sents_s1(df,sim_word_dict,p_dict,save_stop_words,type="train"):
         df.to_csv(f"./privatized_dataset/{args.embedding_type}/{args.mapping_strategy}/eps_{args.eps}_top_{args.top_k}_{args.privatization_strategy}_save_stop_words_{args.save_stop_words}/train.tsv","\t",index=0)
     else:
         df.to_csv(f"./privatized_dataset/{args.embedding_type}/{args.mapping_strategy}/eps_{args.eps}_top_{args.top_k}_{args.privatization_strategy}_save_stop_words_{args.save_stop_words}/test.tsv","\t",index=0)
-        
+
     return df
 
