@@ -4,7 +4,7 @@ This is an anonymous_GitHub_repository for ACL Rolling Review.
 # How to run CusText
 
  python main.py \
-  --dataset "sst2" \
+  --dataset sst2 \
   --epsilon 1.0 \
   --top_k 20 \
   --embedding_type ct_vectors \
@@ -12,7 +12,7 @@ This is an anonymous_GitHub_repository for ACL Rolling Review.
 # How to run CusText+ 
 
  python main.py \
-  --dataset "sst2" \
+  --dataset sst2 \
   --epsilon 1.0 \
   --top_k 20 \
   --embedding_type ct_vectors \
