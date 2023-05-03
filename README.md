@@ -1,5 +1,5 @@
 # Introduction
-This is an anonymous_GitHub_repository for ACL Rolling Review.
+This repo contains source code for "A Customized Text Sanitization Mechanism with Differential Privacy" (accepted to ACL Findings 2023 )
 
 # How to get MedSTS dataset?
 The MedSTS dataset is from the paper: MedSTS: A Resource for Clinical Semantic Textual Similarity https://arxiv.org/pdf/1808.09397.pdf \
