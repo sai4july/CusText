@@ -9,7 +9,7 @@ This is a medical dataset and cannot be directly downloaded. You can contact the
 
  python main.py \
   --dataset sst2 \
-  --epsilon 1.0 \
+  --eps 1.0 \
   --top_k 20 \
   --embedding_type ct_vectors 
 
@@ -17,7 +17,7 @@ This is a medical dataset and cannot be directly downloaded. You can contact the
 
  python main.py \
   --dataset sst2 \
-  --epsilon 1.0 \
+  --eps 1.0 \
   --top_k 20 \
   --embedding_type ct_vectors \
   --save_stop_words True
